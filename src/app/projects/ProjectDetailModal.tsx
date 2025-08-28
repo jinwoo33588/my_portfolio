@@ -5,6 +5,13 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import type { ProjectItem } from "@/components/ProjectCard";
 
+/** 상세 섹션 타입 (any 제거) */
+type DetailSection = {
+  title: string;
+  paragraphs?: string[];
+  bullets?: string[];
+};
+
 export default function ProjectDetailModal({
   project,
   onClose,
@@ -13,10 +20,14 @@ export default function ProjectDetailModal({
   onClose: () => void;
 }) {
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
     window.addEventListener("keydown", onKey);
+
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
@@ -26,12 +37,17 @@ export default function ProjectDetailModal({
   if (!project) return null;
   const p = project;
 
+  // 섹션 안전한 축소(타입 가드)
+  const sections: DetailSection[] = Array.isArray(p.sections)
+    ? (p.sections as DetailSection[])
+    : [];
+
   return (
     <div className="fixed inset-0 z-50">
       {/* 백드롭 */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
 
-      {/* 모달 박스 (바깥은 p-0, 내부에 컨테이너로 여백/최대폭 관리) */}
+      {/* 모달 박스 */}
       <div
         role="dialog"
         aria-modal="true"
@@ -53,7 +69,7 @@ export default function ProjectDetailModal({
           <span className="text-lg leading-none">×</span>
         </button>
 
-        {/* ✅ 내부 컨테이너: 좌우 여백 + 내용 최대폭 제한 */}
+        {/* 내부 컨테이너 */}
         <div className="mx-auto w-full max-w-3xl px-5 sm:px-8 py-6">
           <section className="space-y-8">
             {/* 헤더 요약 */}
@@ -76,12 +92,12 @@ export default function ProjectDetailModal({
               {(p.links?.repo || p.links?.demo) && (
                 <CardFooter className="flex gap-4 text-sm">
                   {p.links?.repo && (
-                    <a href={p.links.repo} target="_blank" className="underline">
+                    <a href={p.links.repo} target="_blank" rel="noreferrer" className="underline">
                       Repo
                     </a>
                   )}
                   {p.links?.demo && (
-                    <a href={p.links.demo} target="_blank" className="underline">
+                    <a href={p.links.demo} target="_blank" rel="noreferrer" className="underline">
                       Live
                     </a>
                   )}
@@ -90,16 +106,16 @@ export default function ProjectDetailModal({
             </Card>
 
             {/* 섹션들 */}
-            {p.sections?.map((sec: any) => (
+            {sections.map((sec) => (
               <Card key={sec.title}>
                 <CardHeader>
                   <CardTitle className="text-xl">{sec.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3 text-sm text-muted-foreground">
-                  {sec.paragraphs?.map((para: string, i: number) => <p key={i}>{para}</p>)}
+                  {sec.paragraphs?.map((para, i) => <p key={i}>{para}</p>)}
                   {!!sec.bullets?.length && (
                     <ul className="list-disc pl-5 space-y-1">
-                      {sec.bullets.map((b: string, i: number) => <li key={i}>{b}</li>)}
+                      {sec.bullets.map((b, i) => <li key={i}>{b}</li>)}
                     </ul>
                   )}
                 </CardContent>

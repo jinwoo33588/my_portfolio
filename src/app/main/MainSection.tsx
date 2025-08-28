@@ -1,6 +1,6 @@
-import Link from "next/link";
+
 import Section from "@/components/Section";
-import { Button } from "@/components/ui/button";
+
 import { ZEBRA } from "@/lib/sectionTheme";
 import { Badge } from "@/components/ui/badge";
 

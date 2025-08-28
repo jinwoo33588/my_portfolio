@@ -1,8 +1,8 @@
 // Server Component
-import Image from "next/image";
+
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+
 
 const INTERESTS = [
   "풀스택 웹(Next.js · React · Node.js)",
@@ -11,7 +11,7 @@ const INTERESTS = [
   "스포츠 데이터 분석(골프 라운드/샷)",
 ];
 
-const STACK = ["Next.js", "React", "Node.js", "MySQL", "Tailwind", "shadcn/ui", "MDX"];
+
 
 export default function AboutFull() {
   return (

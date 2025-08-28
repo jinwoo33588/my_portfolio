@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description: "Full-stack developer portfolio",
 };
 
-export default function RootLayout({ children,modal }: { children: React.ReactNode; modal: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode; }) {
   return (
     <html lang="ko">
       <body className="antialiased">
         <LeftNav /> {/* fixed인 경우 레일 위에 떠 있음 */}
-        <main>{children} {modal}</main> {/* ← md:ml-56 제거! */}
+        <main>{children}</main> {/* ← md:ml-56 제거! */}
       </body>
     </html>
   );
