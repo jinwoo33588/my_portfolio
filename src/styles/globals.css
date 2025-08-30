@@ -164,3 +164,39 @@
   main { padding: 0 !important; }
   a { text-decoration: none; color: #000; }
 }
+
+/* === Notion-like document typography === */
+.doc {
+  --doc-max: 720px;
+  --doc-fg: hsl(0 0% 96%);
+  --doc-muted: hsl(0 0% 70% / 0.9);
+  --doc-border: hsl(0 0% 100% / 0.08);
+  --doc-bg-muted: hsl(0 0% 100% / 0.03);
+  margin: 0 auto;
+  max-width: var(--doc-max);
+  line-height: 1.75;
+}
+
+.doc h1,.doc h2,.doc h3 { letter-spacing: -0.01em; }
+.doc h1 { font-size: 1.875rem; font-weight: 800; margin: 0 0 0.75rem; }
+.doc h2 { font-size: 1.375rem; font-weight: 700; margin: 2.25rem 0 0.75rem; }
+.doc h3 { font-size: 1rem;   font-weight: 600; margin: 1.25rem 0 0.5rem; }
+
+.doc p { margin: 0.5rem 0; color: var(--doc-muted); }
+.doc ul, .doc ol { margin: 0.5rem 0 0.75rem; padding-left: 1.25rem; color: var(--doc-muted); }
+.doc li { margin: 0.25rem 0; }
+
+.doc a { text-decoration: underline; text-underline-offset: 3px; }
+.doc hr { border: 0; border-top: 1px solid var(--doc-border); margin: 1.5rem 0; }
+
+.doc .meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
+.doc .muted { color: var(--doc-muted); }
+
+.doc .trouble {
+  border: 1px solid var(--doc-border);
+  background: var(--doc-bg-muted);
+  border-radius: .75rem; padding: .9rem 1rem; margin-top: .75rem;
+}
+.doc .trouble h4 { font-weight: 600; margin: 0 0 .25rem; }
+.doc .kv { margin-top: .35rem; font-size: .92rem; }
+.doc .kv strong { color: var(--doc-fg); margin-right: .4rem; }

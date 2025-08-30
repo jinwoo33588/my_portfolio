@@ -5,9 +5,9 @@ export const siteConfig = {
   title: "Jinwoo | Portfolio",
   description: "Full-stack developer portfolio",
   links: {
-    github: "https://github.com/yourname",
+    github: "https://github.com/jinwoo33588",
     linkedin: "https://www.linkedin.com/in/yourname",
-    email: "mailto:you@example.com",
+    email: "mailto:jinwoo3358@naver.com",
   },
   nav: [
     { href: "/", label: "Home" },

@@ -14,7 +14,7 @@ export default function MainSection() {
       index={0}
       eyebrow="Welcome"
       title="안녕하세요, 김진우입니다."
-      subtitle="Node.js + React + MySQL 기반 풀스택. 요즘은 Next.js, Tailwind, shadcn/ui, MDX에 집중합니다."
+      subtitle="풀스택 웹 개발을 통해 아이디어를 서비스로 구현하는 것을 즐깁니다. Node.js · React · MySQL을 기반으로, 최근에는 Next.js · TailwindCSS · shadcn/ui 등을 활용하며, MDX도 실험하고 있습니다."
       showLine
     >
       <div className="flex flex-wrap gap-3">

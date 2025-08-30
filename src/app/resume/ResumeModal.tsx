@@ -1,4 +1,3 @@
-// components/resume/ResumeModal.tsx
 "use client";
 
 import { useEffect } from "react";
@@ -40,24 +39,39 @@ export default function ResumeModal({
 
   return (
     <div className="fixed inset-0 z-50">
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
+      {/* Backdrop */}
       <div
-        role="dialog" aria-modal="true"
+        className="absolute inset-0 bg-black/55 backdrop-blur-sm"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+
+      {/* Dialog */}
+      <div
+        role="dialog"
+        aria-modal="true"
         className={cn(
-          "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-auto rounded-xl border bg-background shadow-xl p-0",
+          "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-auto rounded-xl",
+          "border border-gray-200 bg-white shadow-2xl",
           SIZE[size]
         )}
       >
+        {/* Close */}
         <button
           onClick={onClose}
           aria-label="닫기"
-          className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-md hover:bg-muted"
+          className="sticky right-3 top-3 float-right m-3 inline-flex h-9 w-9 items-center justify-center rounded-md hover:bg-neutral-800 text-gray-200"
         >
           <span className="text-lg leading-none">×</span>
         </button>
 
-        {/* 내부 컨테이너: 폭 제한 + 좌우 여백 */}
-        <div className={cn("mx-auto w-full max-w-3xl px-6 sm:px-8 py-6 ", innerClassName)}>
+        {/* Content */}
+        <div
+          className={cn(
+            "clear-both mx-auto w-full max-w-3xl px-6 sm:px-8 py-8",
+            innerClassName
+          )}
+        >
           {children}
         </div>
       </div>

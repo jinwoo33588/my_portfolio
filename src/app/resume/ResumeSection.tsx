@@ -23,8 +23,8 @@ export default function ResumeSection() {
       <div className="flex flex-wrap gap-3">
         {/* 페이지 이동 대신 모달 오픈 */}
         <Button size="lg" onClick={() => setOpen(true)}>웹 이력서 보기</Button>
-        <Button asChild size="lg" variant="outline"><a href="/resume.pdf" download>PDF 다운로드</a></Button>
-        <Button asChild size="lg" variant="outline"><a href="mailto:you@example.com">Email</a></Button>
+        {/* <Button asChild size="lg" variant="outline"><a href="/resume.pdf" download>PDF 다운로드</a></Button>
+        <Button asChild size="lg" variant="outline"><a href="mailto:you@example.com">Email</a></Button> */}
       </div>
 
       <ResumeModal open={open} onClose={() => setOpen(false)} size="xl" innerClassName="max-w-3xl">

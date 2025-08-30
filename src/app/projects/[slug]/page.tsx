@@ -58,7 +58,7 @@ export default function ProjectDetailPage({ params }: Props) {
         </div>
 
         {/* ✅ 내부 컨테이너로 가로폭 제한 + 좌우 패딩 추가 */}
-        <div className="mx-auto w-full max-w-2xl sm:max-w-3xl px-500 sm:px-6 py-6">
+        <div className="mx-auto w-full max-w-2xl sm:max-w-3xl px-5 sm:px-6 py-6">
           <section className="space-y-8">
             {/* 헤더 요약 */}
             <Card>
