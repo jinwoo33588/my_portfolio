@@ -1,11 +1,11 @@
-// components/ResumeSection.tsx
 "use client";
 
 import { useState } from "react";
 import Section from "@/components/Section";
 import { Button } from "@/components/ui/button";
 import ResumeModal from "./ResumeModal";
-import ResumePage from "./page";
+import ResumeBody from "./page";
+import { resumeContent } from "@/contents/resume"; // ← 네가 합쳐놓은 파일
 
 export default function ResumeSection() {
   const [open, setOpen] = useState(false);
@@ -13,7 +13,7 @@ export default function ResumeSection() {
   return (
     <Section
       id="resume"
-      zebra={["dark","muted"]}
+      zebra={["dark", "muted"]}
       index={4}
       eyebrow="Resume"
       title="Resume & Contact"
@@ -21,14 +21,20 @@ export default function ResumeSection() {
       showLine
     >
       <div className="flex flex-wrap gap-3">
-        {/* 페이지 이동 대신 모달 오픈 */}
-        <Button size="lg" onClick={() => setOpen(true)}>웹 이력서 보기</Button>
-        {/* <Button asChild size="lg" variant="outline"><a href="/resume.pdf" download>PDF 다운로드</a></Button>
-        <Button asChild size="lg" variant="outline"><a href="mailto:you@example.com">Email</a></Button> */}
+        <Button size="lg" onClick={() => setOpen(true)}>
+          웹 이력서 보기
+        </Button>
+        {/* 필요하면 PDF 버튼도 같이 */}
+        {/* <Button asChild size="lg" variant="outline"><a href="/resume.pdf" download>PDF 다운로드</a></Button> */}
       </div>
 
-      <ResumeModal open={open} onClose={() => setOpen(false)} size="xl" innerClassName="max-w-3xl">
-        <ResumePage />
+      <ResumeModal
+        open={open}
+        onClose={() => setOpen(false)}
+        size="xl"
+        innerClassName="max-w-3xl"
+      >
+        <ResumeBody content={resumeContent} />
       </ResumeModal>
     </Section>
   );

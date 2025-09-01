@@ -60,7 +60,7 @@ export default function ResumeModal({
         <button
           onClick={onClose}
           aria-label="닫기"
-          className="sticky right-3 top-3 float-right m-3 inline-flex h-9 w-9 items-center justify-center rounded-md text-black hover:bg-neutral-800 text-gray-200"
+          className="sticky right-3 top-3 float-right m-3 inline-flex h-9 w-9 items-center justify-center rounded-md text-gray-700 hover:bg-gray-100"
         >
           <span className="text-lg leading-none">×</span>
         </button>

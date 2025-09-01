@@ -34,7 +34,7 @@ export const projects: ProjectDetail[] = [
     stack: ["Next.js", "React", "TypeScript", "Tailwind", "shadcn/ui", "Vercel"],
     links: {
       repo: "https://github.com/jinwoo33588/my_portfolio.git",
-      demo: "my-portfolio-kskp.vercel.app",
+      demo: "https://my-portfolio-kskp.vercel.app",
     },
     featured: true,
     sections: [
@@ -109,7 +109,7 @@ export const projects: ProjectDetail[] = [
     stack: ["Next.js", "React", "Node.js", "Express", "MySQL", "Tailwind", "shadcn/ui"],
     links: {
       repo: "https://github.com/jinwoo33588/golf-score-app.git",
-      demo: "golf-score-app-v2.vercel.app",
+      demo: "https://golf-score-app-v2.vercel.app",
     },
     featured: true,
     sections: [
@@ -189,7 +189,7 @@ export const projects: ProjectDetail[] = [
     stack: ["React", "TypeScript", "Tailwind", "Vite"],
     links: {
       repo: "https://github.com/jinwoo33588/20251R0136COSE48001.git",
-      demo: "20251-r0136-cose-48001-tau.vercel.app",
+      demo: "https://20251-r0136-cose-48001-tau.vercel.app",
     },
     featured: false,
     slidesPdf: "/docs/TextOperation_Poster_2.pdf",
