@@ -4,7 +4,7 @@ import Section from "@/components/Section";
 import { ZEBRA } from "@/lib/sectionTheme";
 import { Badge } from "@/components/ui/badge";
 
-const STACK = ["Next.js", "React", "Node.js", "MySQL", "Tailwind", "shadcn/ui", "MDX"];
+const STACK = ["Next.js", "React", "Node.js", "MySQL", "Tailwind", "shadcn/ui", "MDX","Unity","C#",".NET"];
 
 export default function MainSection() {
   return (

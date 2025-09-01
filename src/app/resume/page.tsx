@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -10,40 +11,79 @@ const SKILLS: Record<string, string[]> = {
 };
 
 export default function ResumeBody() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    await navigator.clipboard.writeText("jinwoo3358@naver.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
   return (
     <article className="mx-auto w-full max-w-3xl">
       {/* Header */}
       <header className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Jinwoo Kim</h1>
-        <p className="mt-2 text-[15px] text-gray-700">
-          Full-stack Developer · Node.js / React / MySQL
-        </p>
-
-        <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
-          <Link href="mailto:jinwoo3358@naver.com" className="underline text-gray-700 hover:text-gray-900">
-            jinwoo3358@naver.com
-          </Link>
-          <span className="text-gray-400">·</span>
-          <Link
-            href="https://github.com/jinwoo33588"
-            target="_blank"
-            rel="noreferrer"
-            className="underline text-gray-700 hover:text-gray-900"
+        {/* 이름 + PDF 다운로드 */}
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+            Jinwoo Kim
+          </h1>
+          <Button
+            asChild
+            variant="secondary"
+            className="border-gray-300 text-white-800 "
           >
-            GitHub
-          </Link>
-          <span className="text-gray-400">·</span>
-          
-          <span className="text-gray-400">·</span>
-          <Link href="my-portfolio-kskp.vercel.app" className="underline text-gray-700 hover:text-gray-900">
-            Portfolio
-          </Link>
-          <span className="text-gray-400">·</span>
-          {/* <Button asChild variant="outline" className="border-gray-300 text-gray-800 hover:bg-gray-50">
             <a href="/resume.pdf" download>
               PDF 다운로드
             </a>
-          </Button> */}
+          </Button>
+        </div>
+
+        {/* 직무 소개 */}
+        <p className="mt-4 text-[15px] text-gray-700">
+          Full-stack Developer · Node.js / React / MySQL
+        </p>
+
+        {/* 연락처 */}
+        <div className="mt-4 space-y-2 text-sm text-gray-700">
+          {/* Email */}
+          <div className="flex items-center gap-2">
+            이메일:{" "}
+            <button
+              onClick={handleCopyEmail}
+              className="underline hover:text-gray-900 text-left"
+            >
+              jinwoo3358@naver.com
+            </button>
+            {copied && (
+              <span className="text-green-600 text-xs font-medium">복사완료</span>
+            )}
+          </div>
+
+          {/* Github */}
+          <div>
+            Github:{" "}
+            <Link
+              href="https://github.com/jinwoo33588"
+              target="_blank"
+              rel="noreferrer"
+              className="underline hover:text-gray-900"
+            >
+              https://github.com/jinwoo33588
+            </Link>
+          </div>
+
+          {/* Portfolio */}
+          <div>
+            Portfolio:{" "}
+            <Link
+              href="https://my-portfolio-kskp.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              className="underline hover:text-gray-900"
+            >
+              https://my-portfolio-kskp.vercel.app
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -125,7 +165,7 @@ export default function ResumeBody() {
 
       {/* Projects */}
       <section className="mb-10">
-        <h2 className="text-2xl font-semibold text-gray-900">프로젝트</h2>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-3">프로젝트</h2>
         
         {/* Golf Tracker */}
         <div className="mb-8">

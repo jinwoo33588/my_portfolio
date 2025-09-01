@@ -1,8 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import type { ProjectItem } from "@/components/ProjectCard";
+import { Github, FileText } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 /** Trouble 케이스(이 파일 내부에서만 사용) */
 type TroubleCase = {
@@ -27,6 +34,8 @@ export default function ProjectDetailModal({
   project: ProjectItem | null;
   onClose: () => void;
 }) {
+  const [showSlides, setShowSlides] = useState(false);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -44,9 +53,19 @@ export default function ProjectDetailModal({
 
   if (!project) return null;
   const p = project;
+  // slidesPdf는 ProjectItem에 없을 수 있으니 안전하게 읽기
+  const slidesPdf = (p as any)?.slidesPdf as string | undefined;
+
   const sections: DetailSection[] = Array.isArray(p.sections)
     ? (p.sections as DetailSection[])
     : [];
+
+  // 새 탭 열기 헬퍼
+  const openInNewTab = (url: string) => {
+    try {
+      window.open(url, "_blank", "noopener,noreferrer");
+    } catch {}
+  };
 
   return (
     <div className="fixed inset-0 z-50">
@@ -95,39 +114,86 @@ export default function ProjectDetailModal({
                 ))}
               </div>
 
-              {/* 링크 */}
-              {(p.links?.repo || p.links?.demo) && (
-                <div className="mt-4 flex gap-4 text-sm">
-                  {p.links?.repo && (
-                    <a
-                      href={p.links.repo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline underline-offset-4 text-black-200 hover:text-white"
-                    >
-                      Repo
-                    </a>
-                  )}
-                  {p.links?.demo && (
-                    <a
-                      href={p.links.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline underline-offset-4 text-black-200 hover:text-white"
-                    >
-                      Live
-                    </a>
-                  )}
-                </div>
-              )}
+              {/* 링크/자료 아이콘 버튼 영역 */}
+{(p.links?.repo || slidesPdf) && (
+  <TooltipProvider>
+    <div className="mt-4 flex gap-3 text-sm">
+      {/* GitHub Repo 버튼 */}
+      {p.links?.repo && (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <a
+              href={p.links.repo}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center w-9 h-9 rounded-full border shadow hover:bg-muted/60"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+          </TooltipTrigger>
+          <TooltipContent>GitHub 저장소</TooltipContent>
+        </Tooltip>
+      )}
+
+      {/* PDF 발표자료 버튼 */}
+      {slidesPdf && (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <a
+              href={encodeURI(slidesPdf)}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center w-9 h-9 rounded-full border shadow hover:bg-muted/60"
+            >
+              <FileText className="w-5 h-5" />
+            </a>
+          </TooltipTrigger>
+          <TooltipContent>발표자료 PDF</TooltipContent>
+        </Tooltip>
+      )}
+    </div>
+  </TooltipProvider>
+)}
             </header>
+
+            {/* PDF 뷰어 (토글) */}
+            {showSlides && slidesPdf && (
+              <div className="mb-8 rounded-lg border bg-white/5 overflow-hidden">
+                <iframe
+                  // PDF 뷰 개선: 상단 맞춤 보기
+                  src={`${slidesPdf}#view=FitH`}
+                  className="w-full h-[70vh]"
+                  title="발표 자료"
+                />
+                <div className="flex items-center gap-3 p-2 border-t">
+                  <button
+                    type="button"
+                    onClick={() => openInNewTab(slidesPdf)}
+                    className="px-3 py-1.5 text-sm rounded-md border hover:bg-muted/50"
+                    aria-label="새 탭에서 열기"
+                    title="새 탭에서 열기"
+                  >
+                    새 탭에서 열기
+                  </button>
+                  <a
+                    href={slidesPdf}
+                    download
+                    className="px-3 py-1.5 text-sm rounded-md border hover:bg-muted/50"
+                    aria-label="PDF 다운로드"
+                    title="PDF 다운로드"
+                  >
+                    다운로드
+                  </a>
+                </div>
+              </div>
+            )}
 
             <hr className="border-white/10 my-6" />
 
             {/* 섹션들 */}
             {sections.map((sec) => (
               <section key={sec.title} className="mb-10">
-                <h2 className="text-2xl font-semibold text-black-100">{sec.title}</h2>
+                <h2 className="text-2xl font-semibold text-black-100 bg-gray-200">{sec.title}</h2>
 
                 {/* 본문 */}
                 {sec.paragraphs?.map((para, i) => (
@@ -158,7 +224,7 @@ export default function ProjectDetailModal({
                         key={i}
                         className="rounded-lg border border-white/10 bg-white/[0.04] p-4"
                       >
-                        <h3 className="text-[15px] font-semibold text-black-100">
+                        <h3 className="w-fit  text-[15px] font-semibold text-black-100 bg-red-100">
                           {t.title}
                         </h3>
                         <p className="mt-2 text-sm text-black-300">

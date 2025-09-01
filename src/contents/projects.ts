@@ -21,13 +21,14 @@ export type ProjectDetail = {
   links?: { repo?: string; demo?: string };
   featured?: boolean;
   sections: CaseSection[];
+  slidesPdf?: string;
 };
 
 export const projects: ProjectDetail[] = [
   {
     slug: "portfolio-site",
     title: "개인 포트폴리오 사이트",
-    year: "2025",
+    year: "2025.08",
     summary:
       "Next.js(App Router) + Tailwind + shadcn/ui 기반 포트폴리오. Section 토큰 설계, 공식 아이콘 타일, 오른쪽 하단 플로팅 버튼 등 최신 프론트엔드 패턴 적용.",
     stack: ["Next.js", "React", "TypeScript", "Tailwind", "shadcn/ui", "Vercel"],
@@ -102,7 +103,7 @@ export const projects: ProjectDetail[] = [
   {
     slug: "golf-score-app",
     title: "Golf Round & Shot Tracker",
-    year: "2025",
+    year: "2025.07~08",
     summary:
       "라운드/홀/샷 단위 기록 및 통계 시각화를 제공하는 풀스택 웹앱. JWT 인증, 소유권 검증, 서버 집계 통계 API(v1), MySQL 인덱스 튜닝 경험 포함.",
     stack: ["Next.js", "React", "Node.js", "Express", "MySQL", "Tailwind", "shadcn/ui"],
@@ -182,7 +183,7 @@ export const projects: ProjectDetail[] = [
   {
     slug: "text-operator",
     title: "Text Operator (토큰 기반 텍스트 계산기)",
-    year: "2024",
+    year: "2025.03~06",
     summary:
       "문장을 토큰 단위로 분리하고 Drag & Drop으로 재조합하는 실험적 텍스트 툴. 상태 설계와 UI/UX 실험을 통해 인터랙션을 연구.",
     stack: ["React", "TypeScript", "Tailwind", "Vite"],
@@ -191,6 +192,7 @@ export const projects: ProjectDetail[] = [
       demo: "20251-r0136-cose-48001-tau.vercel.app",
     },
     featured: false,
+    slidesPdf: "/docs/TextOperation_Poster_2.pdf",
     sections: [
       {
         title: "개요",
@@ -252,7 +254,7 @@ export const projects: ProjectDetail[] = [
   {
     slug: "hagin-Project",
     title: "Hagin Project (Unity 생존 러너)",
-    year: "2024",
+    year: "2024.09~12",
     summary:
       "Unity3D 기반 생존 러너 게임. 플레이어는 두 개의 적 추적 AI를 피해 달아나며, HP에 따라 이동 속도가 변하고 Dash 스킬로 긴급 회피가 가능.",
     stack: ["Unity", "C#", "OOP", "State Machine", "Game AI"],
@@ -261,6 +263,7 @@ export const projects: ProjectDetail[] = [
       // demo: "https://..." // 데모가 있으면 나중에 추가
     },
     featured: false,
+    slidesPdf: "docs/해긴기말발표_3(2018320126김진우) (1).pdf",
     sections: [
       {
         title: "개요",
