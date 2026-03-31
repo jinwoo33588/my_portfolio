@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Mail, Github, Linkedin, FileText } from "lucide-react";
+// import { Mail, Github, Linkedin, FileText } from "lucide-react";
 
 const INTERESTS = [
   "풀스택 웹 · Next.js/React/Node.js (제품 아이디어를 서비스로 구현)",
