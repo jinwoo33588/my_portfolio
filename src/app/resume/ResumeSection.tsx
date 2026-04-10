@@ -4,7 +4,7 @@ import { useState } from "react";
 import Section from "@/components/Section";
 import { Button } from "@/components/ui/button";
 import ResumeModal from "./ResumeModal";
-import ResumeBody from "./page";
+import ResumeBody from "./ResumeBody";
 import { resumeContent } from "@/contents/resume"; // ← 네가 합쳐놓은 파일
 
 export default function ResumeSection() {
