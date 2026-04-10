@@ -1,6 +1,5 @@
 // Server Component
 
-import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 // import { Mail, Github, Linkedin, FileText } from "lucide-react";
@@ -11,9 +10,8 @@ const INTERESTS = [
   "UI/UX 실험 · 토큰화 인터페이스·인터랙션 디자인",
   "데이터 파이프라인/분석 · 골프 라운드·샷 레벨 모델링",
   "배포/운영 · Vercel·Render·Railway·CI/CD",
-  "게임 개발 · Unity/C# (상태 머신, 추적 AI, Dash)", 
+  "게임 개발 · Unity/C# (상태 머신, 추적 AI, Dash)",
 ];
-
 
 const TIMELINE = [
   {
@@ -48,7 +46,6 @@ const TIMELINE = [
   },
 ];
 
-
 export default function AboutFull() {
   return (
     <section className="space-y-8">
@@ -59,17 +56,17 @@ export default function AboutFull() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Interests */}
         <Card>
-  <CardHeader>
-    <CardTitle className="text-xl">관심 분야</CardTitle>
-  </CardHeader>
-  <CardContent className="flex flex-wrap gap-2">
-    {INTERESTS.map((i) => (
-      <Badge key={i} variant="secondary" className="px-3 py-1 text-sm">
-        {i}
-      </Badge>
-    ))}
-  </CardContent>
-</Card>
+          <CardHeader>
+            <CardTitle className="text-xl">관심 분야</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-wrap gap-2">
+            {INTERESTS.map((i) => (
+              <Badge key={i} variant="secondary" className="px-3 py-1 text-sm">
+                {i}
+              </Badge>
+            ))}
+          </CardContent>
+        </Card>
 
         {/* Timeline */}
         <Card>
@@ -89,7 +86,6 @@ export default function AboutFull() {
         </Card>
       </div>
 
-      
       {/* Links */}
       {/* <div className="flex gap-4 text-muted-foreground">
         <Link href="mailto:you@example.com"><Mail className="w-5 h-5 hover:text-blue-500" /></Link>

@@ -34,7 +34,7 @@ export default function ProjectDetailModal({
   project: ProjectItem | null;
   onClose: () => void;
 }) {
-  const [showSlides, setShowSlides] = useState(false);
+  const [showSlides] = useState(false);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -52,9 +52,14 @@ export default function ProjectDetailModal({
   }, [onClose]);
 
   if (!project) return null;
-  const p = project;
-  // slidesPdf는 ProjectItem에 없을 수 있으니 안전하게 읽기
-  const slidesPdf = (p as any)?.slidesPdf as string | undefined;
+
+  type ProjectDetailItem = ProjectItem & {
+    slidesPdf?: string;
+    sections?: DetailSection[];
+  };
+
+  const p = project as ProjectDetailItem;
+  const slidesPdf = p.slidesPdf;
 
   const sections: DetailSection[] = Array.isArray(p.sections)
     ? (p.sections as DetailSection[])
