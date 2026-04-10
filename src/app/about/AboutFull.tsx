@@ -86,13 +86,6 @@ export default function AboutFull() {
         </Card>
       </div>
 
-      {/* Links */}
-      {/* <div className="flex gap-4 text-muted-foreground">
-        <Link href="mailto:you@example.com"><Mail className="w-5 h-5 hover:text-blue-500" /></Link>
-        <Link href="https://github.com/jinwoo33588" target="_blank"><Github className="w-5 h-5 hover:text-gray-800" /></Link>
-        <Link href="https://www.linkedin.com/in/yourname" target="_blank"><Linkedin className="w-5 h-5 hover:text-blue-600" /></Link>
-        <Link href="/resume"><FileText className="w-5 h-5 hover:text-green-600" /></Link>
-      </div> */}
     </section>
   );
 }

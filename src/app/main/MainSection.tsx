@@ -23,9 +23,6 @@ export default function MainSection() {
                 <Badge key={s} variant="secondary">{s}</Badge>
               ))}
             </div>
-        {/* <Button asChild size="lg"><Link href="#about">About</Link></Button>
-        <Button asChild size="lg" variant="outline"><Link href="#projects">Projects</Link></Button>
-        <Button asChild size="lg" variant="outline"><Link href="#resume">Resume</Link></Button> */}
       </div>
     </Section>
   );

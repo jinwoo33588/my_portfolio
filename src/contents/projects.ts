@@ -143,7 +143,7 @@ export const projects: ProjectDetail[] = [
           "아키텍처: Next.js(App Router) + TailwindCSS + shadcn/ui",
           "UI 토큰화: Section 컴포넌트(eyebrow/title/subtitle/zebra)",
           "Skill & Tools: IconTile 컴포넌트(둥근 블러 타일 + react-icons 공식 로고)",
-          "SocialFloat: 이메일·GitHub·Resume + ScrollToTop 버튼 항상 표시",
+          "SocialFloat: 이메일·GitHub + ScrollToTop 버튼 항상 표시",
           "프로젝트 데이터: contents/projects에 JSON 기반 정의 → 카드/상세 자동 반영",
           "접근성: aria-label/sr-only, 포커스 링, 대비 체크",
           "배포: Vercel Preview URL로 QA/검수",

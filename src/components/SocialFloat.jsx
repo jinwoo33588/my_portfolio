@@ -88,11 +88,6 @@ export default function SocialFloat() {
         <span className="sr-only">LinkedIn</span>
       </a> */}
 
-      {/* Resume */}
-      {/* <Link href="/resume" className={base} aria-label="Resume">
-        <FileText className={icon} />
-        <span className="sr-only">Resume</span>
-      </Link> */}
     </div>
   );
 }

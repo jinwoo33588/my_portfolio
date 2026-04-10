@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 type ThemeKey = "paper" | "muted" | "dark" | "brand";
 
-const SECTION_IDS = ["main", "about", "skills", "projects", "resume"];
+const SECTION_IDS = ["main", "about", "skills", "projects"];
 
 export default function LeftRail() {
   const [theme, setTheme] = useState<ThemeKey>("paper");

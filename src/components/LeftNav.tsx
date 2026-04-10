@@ -8,7 +8,6 @@ const SECTIONS = [
   { id: "about",   label: "About",   href: "#about" },
   { id: "skills",  label: "Skills",  href: "#skills" },
   { id: "projects",label: "Projects",href: "#projects" },
-  { id: "resume",  label: "Resume",  href: "#resume" },
 ];
 
 const TOP_LOCK_PX = 120;
