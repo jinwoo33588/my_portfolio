@@ -56,10 +56,18 @@ export default function ProjectDetailModal({
   type ProjectDetailItem = ProjectItem & {
     slidesPdf?: string;
     sections?: DetailSection[];
+    screenshots?: Array<{
+      type?: "image" | "video";
+      src: string;
+      alt?: string;
+      caption?: string;
+      poster?: string;
+    }>;
   };
 
   const p = project as ProjectDetailItem;
   const slidesPdf = p.slidesPdf;
+  const screenshots = p.screenshots ?? [];
 
   const sections: DetailSection[] = Array.isArray(p.sections)
     ? (p.sections as DetailSection[])
@@ -255,6 +263,49 @@ export default function ProjectDetailModal({
                 )}
               </section>
             ))}
+
+            {/* Screenshots */}
+            {screenshots.length > 0 && (
+              <section className="mb-10">
+                <h2 className="text-2xl font-semibold text-black-100 bg-gray-200">
+                  스크린샷
+                </h2>
+                <div className="mt-4 -mx-2 overflow-x-auto">
+                  <div className="flex snap-x snap-mandatory gap-4 px-2 pb-2">
+                  {screenshots.map((s, i) => (
+                    <figure
+                      key={`${s.src}-${i}`}
+                      className="snap-center shrink-0 w-[85%] sm:w-[60%] md:w-[48%] overflow-hidden rounded-lg border bg-white/5"
+                    >
+                      {s.type === "video" ? (
+                        <video
+                          src={s.src}
+                          poster={s.poster}
+                          controls
+                          playsInline
+                          preload="metadata"
+                          className="h-auto w-full object-cover"
+                          aria-label={s.alt ?? `${p.title} video ${i + 1}`}
+                        />
+                      ) : (
+                        <img
+                          src={s.src}
+                          alt={s.alt ?? `${p.title} screenshot ${i + 1}`}
+                          className="h-auto w-full object-cover"
+                          loading="lazy"
+                        />
+                      )}
+                      {s.caption && (
+                        <figcaption className="px-3 py-2 text-xs text-black-400">
+                          {s.caption}
+                        </figcaption>
+                      )}
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            )}
           </article>
         </div>
       </div>

@@ -20,7 +20,7 @@ export default function Section({
   className?: string;
   children: React.ReactNode;
   title?: string;
-  subtitle?: string;
+  subtitle?: React.ReactNode;
   eyebrow?: string;
   align?: "left" | "center";
   showLine?: boolean;

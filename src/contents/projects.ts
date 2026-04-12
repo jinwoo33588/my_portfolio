@@ -22,12 +22,19 @@ export type ProjectDetail = {
   featured?: boolean;
   sections: CaseSection[];
   slidesPdf?: string;
+  screenshots?: Array<{
+    type?: "image" | "video";
+    src: string;
+    alt?: string;
+    caption?: string;
+    poster?: string;
+  }>;
 };
 
 export const projects: ProjectDetail[] = [
   {
     slug: "billiards-project",
-    title: "Billiards Record & Handicap Service",
+    title: "당구 기록 서비스",
     year: "2025.09~2026.03",
     summary:
       "실제 사용자 데이터를 기반으로 경기 기록과 핸디캡을 자동 계산하는 웹 애플리케이션. 에버리지·승률 기반 로직을 직접 설계하고, 데이터 요청 구조 개선을 통해 성능을 최적화.",
@@ -36,6 +43,17 @@ export const projects: ProjectDetail[] = [
       repo: "https://github.com/jinwoo33588/billiard-app.git", // 나중에 채우기
       demo: "https://billiard-app.vercel.app/", // 있으면
     },
+    screenshots: [
+      { src: "/projects/billiards/1.png", caption: "홈" },
+      { src: "/projects/billiards/2.png", caption: "경기 기록" },
+      { src: "/projects/billiards/3.png", caption: "경기 상세 보기" },
+      { src: "/projects/billiards/4.png", caption: "기간 별 조회" },
+      { src: "/projects/billiards/5.png", caption: "기간 필터 설정" },
+      { src: "/projects/billiards/6.png", caption: "경기 기록 추가" },
+      { src: "/projects/billiards/7.png", caption: "최근 경기 분석" },
+      { src: "/projects/billiards/8.png", caption: "랭킹" },
+      { src: "/projects/billiards/9.png", caption: "랭킹" },
+    ],
     featured: true,
     sections: [
       {
@@ -200,15 +218,7 @@ export const projects: ProjectDetail[] = [
     year: "2025.07~08",
     summary:
       "라운드/홀/샷 단위 기록 및 통계 시각화를 제공하는 풀스택 웹앱. JWT 인증, 소유권 검증, 서버 집계 통계 API(v1), MySQL 인덱스 튜닝 경험 포함.",
-    stack: [
-      "Next.js",
-      "React",
-      "Node.js",
-      "Express",
-      "MySQL",
-      "Tailwind",
-      "shadcn/ui",
-    ],
+    stack: ["React", "Vite", "Node.js", "Express", "MySQL", "CSS"],
     links: {
       repo: "https://github.com/jinwoo33588/golf-score-app.git",
       demo: "https://golf-score-app-v2.vercel.app",
@@ -225,7 +235,7 @@ export const projects: ProjectDetail[] = [
       {
         title: "설계 & 구현",
         bullets: [
-          "아키텍처: Next.js(App Router) + Node/Express + MySQL",
+          "아키텍처: React + Vite + Node/Express + MySQL",
           "DB 설계: users-rounds-holes-shots 3계층, 외래키 및 인덱스 튜닝",
           "인증: JWT 토큰, 미들웨어에서 라운드 소유권 검증",
           "프론트엔드: Axios 인스턴스에 토큰 자동 첨부, 401 응답 인터셉터 처리",
@@ -246,8 +256,8 @@ export const projects: ProjectDetail[] = [
               "배포 환경에 맞는 DB 선택과 초기 로깅 설계의 중요성을 학습",
           },
           {
-            title: "Sequelize timestamp 충돌",
-            problem: "createdAt/updatedAt 자동 컬럼이 DB 스키마와 불일치",
+            title: "mysql2 직접 사용으로 전환",
+            problem: "Sequelize의 timestamp 충돌로 DB 스키마 불일치",
             solution: "ORM을 버리고 mysql2로 마이그레이션, 스키마를 직접 정의",
             reflection:
               "ORM은 빠르지만 제약이 크다. 상황에 맞는 기술 선택이 필요",
@@ -375,6 +385,13 @@ export const projects: ProjectDetail[] = [
     },
     featured: false,
     slidesPdf: "docs/해긴기말발표_3(2018320126김진우) (1).pdf",
+    screenshots: [
+      {
+        type: "video",
+        src: "/projects/hagin/demo.mp4",
+        caption: "플레이 데모",
+      },
+    ],
     sections: [
       {
         title: "개요",
